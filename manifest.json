@@ -1,18 +1,21 @@
 {
- "manifest_version": 2,
- "name": "Sample Name",
+ "manifest_version": 3,
+ "name": "Youtube Shorts Remover",
  "version": "1.0.0",
- "description": "This is a sample description",
- "short_name": "Short Sample Name",
- "permissions": ["activeTab", "declarativeContent", "storage", "<all_urls>"],
+ "description": "Replace youtube shorts with normal interface.",
+ "short_name": "No YT Shorts",
+ "permissions": ["tabs"],
  "content_scripts": [
    {
-     "matches": ["<all_urls>"],
+     "matches": ["*://www.youtube.com/*"],
      "css": ["background.css"],
-     "js": ["background.js"]
+     "js": ["content.js"]
    }
  ],
- "browser_action": {
+ "background": {
+  "service_worker": "background.js"
+},
+ "action": {
    "default_title": "Does a thing when you do a thing",
    "default_popup": "popup.html",
    "default_icon": {
